@@ -1,0 +1,328 @@
+/* ═══════════════════════════════════════════
+   AgriStore AI — Search & Warehouse Cards
+═══════════════════════════════════════════ */
+
+/* ─── PAGE HERO (sub-pages) ─── */
+.page-hero {
+  background: var(--green-800);
+  padding: 2.5rem 2rem;
+  color: #fff;
+}
+.page-hero-inner { max-width: 1200px; margin: 0 auto; }
+.page-hero h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+.page-hero p { color: rgba(255,255,255,.7); font-size: .9rem; }
+
+/* ─── TOP SEARCH BAR ─── */
+.search-bar-full {
+  display: flex;
+  gap: .75rem;
+  margin-top: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.search-bar-full input,
+.search-bar-full select {
+  padding: .6rem 1rem;
+  border: 1.5px solid rgba(255,255,255,.2);
+  border-radius: var(--radius-sm);
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  font-size: .875rem;
+  outline: none;
+  min-width: 160px;
+  transition: border-color .2s, background .2s;
+}
+.search-bar-full input::placeholder { color: rgba(255,255,255,.5); }
+.search-bar-full select option { color: var(--text); background: #fff; }
+.search-bar-full input:focus,
+.search-bar-full select:focus {
+  border-color: var(--green-400);
+  background: rgba(255,255,255,.15);
+}
+
+/* ─── RESULTS LAYOUT ─── */
+.results-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+/* ─── FILTER PANEL ─── */
+.filter-panel {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+}
+.filter-panel h4 {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  margin-bottom: .75rem;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.filter-group:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1rem;
+  padding-bottom: 0;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+}
+.filter-row label {
+  font-size: .875rem;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.filter-row input[type="checkbox"],
+.filter-row input[type="radio"] {
+  accent-color: var(--green-600);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.range-slider {
+  width: 100%;
+  accent-color: var(--green-600);
+  margin-top: .5rem;
+  cursor: pointer;
+}
+.range-val {
+  font-size: .8rem;
+  color: var(--green-700);
+  font-weight: 600;
+  margin-top: .25rem;
+}
+
+/* ─── RESULTS HEADER ─── */
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.results-header span { font-size: .9rem; color: var(--text-muted); }
+.results-count { color: var(--green-600); font-weight: 600; }
+.results-header select {
+  padding: .4rem .75rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: .825rem;
+  color: var(--text);
+  background: #fff;
+  cursor: pointer;
+}
+
+/* ─── WAREHOUSE GRID ─── */
+.warehouse-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ─── WAREHOUSE CARD ─── */
+.warehouse-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 1.25rem;
+  align-items: center;
+  transition: all .22s;
+  cursor: pointer;
+  position: relative;
+}
+.warehouse-card:hover {
+  border-color: var(--green-400);
+  box-shadow: var(--shadow-md);
+}
+
+/* AI Pick badge */
+.warehouse-card.ai-pick {
+  border-color: var(--green-300, #95D5B2);
+}
+.ai-pick-badge {
+  position: absolute;
+  top: .85rem;
+  right: .85rem;
+  background: var(--amber-500);
+  color: var(--amber-900);
+  font-size: .68rem;
+  font-weight: 700;
+  padding: .25rem .65rem;
+  border-radius: 100px;
+}
+
+/* ─── WAREHOUSE IMAGE ─── */
+.wh-img {
+  width: 120px;
+  height: 90px;
+  border-radius: var(--radius-sm);
+  background: var(--green-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.wh-img img { width: 100%; height: 100%; object-fit: cover; }
+.wh-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+/* ─── WAREHOUSE BODY ─── */
+.wh-body { min-width: 0; }
+
+.wh-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--green-900);
+  margin-bottom: .25rem;
+}
+.wh-location {
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin-bottom: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+
+/* AI Score badge */
+.ai-score {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .75rem;
+  color: var(--green-700);
+  font-weight: 600;
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: 100px;
+  padding: .2rem .6rem;
+  margin-bottom: .5rem;
+}
+.ai-score::before { content: '✦'; color: var(--green-500); }
+
+/* Tags */
+.tags {
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+  margin-bottom: .6rem;
+}
+.tag {
+  font-size: .72rem;
+  font-weight: 500;
+  padding: .2rem .55rem;
+  border-radius: 100px;
+  background: var(--green-50);
+  color: var(--green-700);
+  border: 1px solid var(--green-100);
+}
+.tag.grain {
+  background: var(--amber-100);
+  color: var(--amber-900);
+  border-color: var(--amber-300);
+}
+.tag.cold {
+  background: #e8f4fd;
+  color: #1a5276;
+  border-color: #aed6f1;
+}
+
+.wh-meta {
+  font-size: .8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.wh-meta strong { color: var(--text); font-weight: 600; }
+.stars { color: var(--amber-500); }
+
+/* ─── WAREHOUSE ACTIONS ─── */
+.wh-actions {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  align-items: flex-end;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.price-big { text-align: right; }
+.price-big strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--green-800);
+}
+.price-big span {
+  font-size: .75rem;
+  color: var(--text-muted);
+  display: block;
+  margin-top: -.1rem;
+}
+
+/* ─── EMPTY STATE ─── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+}
+.empty-state .empty-icon { font-size: 3rem; margin-bottom: 1rem; }
+.empty-state h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--green-900);
+  margin-bottom: .5rem;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .results-layout { grid-template-columns: 1fr; padding: 0 1rem; }
+  .filter-panel   { display: none; }
+}
+@media (max-width: 600px) {
+  .warehouse-card { grid-template-columns: 1fr; }
+  .wh-img         { width: 100%; height: 140px; }
+  .wh-actions     { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Storage – AgriStore AI</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/search.css">
+<link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#D8F3DC" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <span class="logo-text">Agri<span>Store</span> AI</span>
+    </a>
+    <div class="nav-links">
+      <a href="search.html" class="active">Find Storage</a>
+      <a href="index.html#how-it-works">How It Works</a>
+    </div>
+    <div class="nav-actions" id="navActions"></div>
+  </div>
+</nav>
+
+<!-- SEARCH RESULTS / SUCCESS TOGGLE -->
+<div id="searchWrapper">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <h2>Find Storage Near You</h2>
+      <p>AI-ranked warehouses based on your crop, location, and quantity</p>
+      <div class="search-bar-full">
+        <input type="text" id="searchCity" placeholder="📍 City (e.g. Mandya)">
+        <select id="searchCrop">
+          <option value="general">🌾 Any Crop</option>
+          <option value="rice">Rice</option>
+          <option value="wheat">Wheat</option>
+          <option value="maize">Maize</option>
+          <option value="tomato">Tomato</option>
+          <option value="potato">Potato</option>
+          <option value="onion">Onion</option>
+          <option value="pulses">Pulses</option>
+          <option value="cotton">Cotton</option>
+        </select>
+        <input type="number" id="searchQty" placeholder="Qty (tonnes)" min="1">
+        <button class="btn btn-amber" id="searchBtn">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS LAYOUT -->
+  <div class="results-layout">
+    <!-- FILTER PANEL -->
+    <aside class="filter-panel">
+      <div class="filter-group">
+        <h4>Max Price / Tonne</h4>
+        <input type="range" class="range-slider" min="100" max="1000" value="800" id="priceSlider">
+        <div class="range-val" id="priceVal">₹800/t</div>
+      </div>
+      <div class="filter-group">
+        <h4>Distance</h4>
+        <input type="range" class="range-slider" min="5" max="200" value="100" id="distSlider">
+        <div class="range-val" id="distVal">100 km</div>
+      </div>
+      <div class="filter-group">
+        <h4>Storage Type</h4>
+        <div class="filter-row"><label><input type="checkbox" value="dry" checked> Dry Storage</label></div>
+        <div class="filter-row"><label><input type="checkbox" value="cold_chain" checked> Cold Chain</label></div>
+        <div class="filter-row"><label><input type="checkbox" value="refrigerated"> Refrigerated</label></div>
+        <div class="filter-row"><label><input type="checkbox" value="silo"> Silo</label></div>
+        <div class="filter-row"><label><input type="checkbox" value="open_yard"> Open Yard</label></div>
+      </div>
+      <div class="filter-group">
+        <h4>Minimum Rating</h4>
+        <div class="filter-row"><label><input type="radio" name="rating" value="" checked> ⭐ Any</label></div>
+        <div class="filter-row"><label><input type="radio" name="rating" value="3"> ⭐⭐⭐ 3+</label></div>
+        <div class="filter-row"><label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐ 4+</label></div>
+      </div>
+      <button class="btn btn-primary" style="width:100%" onclick="loadWarehouses()">Apply Filters</button>
+    </aside>
+
+    <!-- RESULTS -->
+    <div>
+      <div class="results-header">
+        <span id="resultCount" class="results-count">Searching…</span>
+        <select id="sortSelect">
+          <option value="">AI Recommended</option>
+          <option value="price_asc">Price: Low → High</option>
+          <option value="price_desc">Price: High → Low</option>
+          <option value="rating">Highest Rated</option>
+        </select>
+      </div>
+      <div class="warehouse-grid" id="warehouseGrid">
+        <!-- Injected by search.js -->
+      </div>
+    </div>
+  </div>
+
+</div><!-- /#searchWrapper -->
+
+<!-- SUCCESS SCREEN (shown after booking) -->
+<div id="successWrapper" style="display:none">
+  <div class="success-wrapper">
+    <div class="success-icon">✅</div>
+    <h3>Booking Confirmed!</h3>
+    <p>Your storage request has been submitted. The warehouse owner will confirm within 24 hours. Track it from your dashboard.</p>
+    <div class="booking-ref" id="bookingRefNum">AGR-00000000</div>
+    <div style="font-size:.85rem;color:var(--text-muted);margin-bottom:1rem">
+      Estimated Total: <strong id="bookingTotalAmt">—</strong>
+    </div>
+    <div class="success-btns">
+      <a href="farmer-dashboard.html" class="btn btn-primary btn-lg">Go to Dashboard</a>
+      <button class="btn btn-outline btn-lg" onclick="document.getElementById('successWrapper').style.display='none';document.getElementById('searchWrapper').style.display='block'">
+        Search More
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeBookingModal()">✕</button>
+    <h3>Book Storage</h3>
+    <div class="modal-sub">
+      <strong id="modalWhName">Loading…</strong>
+      <span id="modalWhLocation" style="color:var(--text-muted);font-size:.8rem;margin-left:.5rem"></span>
+    </div>
+
+    <div class="map-ph">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      <span>📍 <span id="modalAvail">— tonnes available</span> · Rate: <strong id="modalRate">—</strong>/tonne/month</span>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Crop Type</label>
+        <select id="bookCrop"></select>
+      </div>
+      <div class="form-group">
+        <label>Quantity (tonnes)</label>
+        <input type="number" id="bookQty" value="50" min="1">
+      </div>
+    </div>
+    <div id="capacityWarn" style="display:none;color:#c0392b;font-size:.8rem;margin-bottom:.5rem"></div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Start Date</label>
+        <input type="date" id="bookStart">
+      </div>
+      <div class="form-group">
+        <label>End Date</label>
+        <input type="date" id="bookEnd">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Special Requirements (optional)</label>
+      <textarea id="bookSpecial" placeholder="e.g. needs pest control, separate bay for premium variety…"></textarea>
+    </div>
+
+    <div class="booking-summary">
+      <div class="booking-summary-row"><span>Storage rate</span><span id="modalRate2">—</span></div>
+      <div class="booking-summary-row"><span>Quantity</span><span id="sumQty">—</span></div>
+      <div class="booking-summary-row"><span>Duration</span><span id="sumDur">—</span></div>
+      <div class="booking-summary-row total"><span>Estimated Total</span><strong id="sumTotal">—</strong></div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeBookingModal()">Cancel</button>
+      <button class="btn btn-primary" id="confirmBookingBtn" onclick="confirmBooking()">Confirm Booking →</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/search.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>

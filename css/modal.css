@@ -1,0 +1,251 @@
+/* ═══════════════════════════════════════════
+   AgriStore AI — Modal & Form Styles
+═══════════════════════════════════════════ */
+
+/* ─── MODAL OVERLAY ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+.modal-overlay.open { display: flex; }
+
+/* ─── MODAL BOX ─── */
+.modal {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  animation: modal-in .2s ease;
+}
+@keyframes modal-in {
+  from { transform: translateY(16px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.modal-close:hover {
+  background: var(--cream-dark);
+  color: var(--text);
+}
+
+.modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--green-900);
+  margin-bottom: .25rem;
+  padding-right: 2rem;
+}
+.modal-sub {
+  font-size: .85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* ─── MAP PLACEHOLDER ─── */
+.map-ph {
+  background: var(--green-50);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: .875rem;
+  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.map-ph:hover { background: var(--green-100); }
+.map-ph svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--green-400);
+  fill: none;
+  stroke-width: 1.5;
+}
+.map-ph span { font-size: .8rem; }
+
+/* ─── FORM LAYOUT ─── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+  margin-bottom: .75rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  margin-bottom: .75rem;
+}
+.form-group.full { grid-column: 1 / -1; }
+
+.form-group label {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: .65rem .9rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: .875rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  width: 100%;
+  background: #fff;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(82,183,136,.12);
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+.form-group input[type="date"] { cursor: pointer; }
+
+/* ─── BOOKING SUMMARY ─── */
+.booking-summary {
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+}
+.booking-summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .875rem;
+  padding: .3rem 0;
+  color: var(--text-muted);
+}
+.booking-summary-row.total {
+  font-weight: 700;
+  color: var(--text);
+  border-top: 1px solid var(--green-200);
+  margin-top: .5rem;
+  padding-top: .75rem;
+  font-size: 1rem;
+}
+.booking-summary-row.total strong { color: var(--green-800); }
+
+/* ─── MODAL FOOTER ─── */
+.modal-footer {
+  display: flex;
+  gap: .75rem;
+  margin-top: 1.25rem;
+}
+.modal-footer .btn { flex: 1; justify-content: center; }
+.modal-footer .btn-primary { flex: 2; }
+
+/* ─── PENDING BADGE ─── */
+.pending-badge {
+  background: var(--amber-100);
+  color: var(--amber-900);
+  font-size: .72rem;
+  font-weight: 700;
+  padding: .15rem .5rem;
+  border-radius: 100px;
+}
+
+/* ─── SUCCESS SCREEN ─── */
+.success-wrapper {
+  max-width: 480px;
+  margin: 4rem auto;
+  text-align: center;
+  padding: 2rem;
+}
+.success-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--green-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2.5rem;
+}
+.success-wrapper h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--green-900);
+  margin-bottom: .75rem;
+}
+.success-wrapper p {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+.booking-ref {
+  background: var(--green-50);
+  border: 1px solid var(--green-200);
+  border-radius: var(--radius-sm);
+  padding: .75rem 1.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--green-800);
+  margin-bottom: 2rem;
+  display: inline-block;
+  letter-spacing: .1em;
+}
+.success-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 540px) {
+  .modal { padding: 1.25rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .modal-footer { flex-direction: column; }
+  .modal-footer .btn-primary { flex: unset; }
+}

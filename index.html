@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriStore AI – Smart Storage for Farmers</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/hero.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <span class="logo-text">Agri<span>Store</span> AI</span>
+    </a>
+    <div class="nav-links">
+      <a href="search.html">Find Storage</a>
+      <a href="owner-dashboard.html">List Warehouse</a>
+      <a href="#how-it-works">How It Works</a>
+    </div>
+    <div class="nav-actions" id="navActions">
+      <a href="login.html"    class="btn btn-outline">Login</a>
+      <a href="register.html" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🤖 AI-Powered Warehouse Matching</div>
+    <h1>Smart Storage <em>Allocation</em><br>for Every Farmer</h1>
+    <p>Connect with nearby warehouses, get AI-driven recommendations, and book storage for your crops — all in one simple platform.</p>
+
+    <div class="search-card">
+      <div class="search-tabs">
+        <button class="tab active">🔍 Find Storage</button>
+        <button class="tab">📦 List Warehouse</button>
+        <button class="tab">📊 Check Availability</button>
+      </div>
+      <div class="search-row">
+        <div class="input-group">
+          <label>Your City</label>
+          <input type="text" id="heroCity" placeholder="e.g. Mandya, Karnataka">
+        </div>
+        <div class="input-group">
+          <label>Crop Type</label>
+          <select id="heroCrop">
+            <option value="general">Select crop…</option>
+            <option value="rice">Rice</option>
+            <option value="wheat">Wheat</option>
+            <option value="maize">Maize</option>
+            <option value="tomato">Tomato</option>
+            <option value="potato">Potato</option>
+            <option value="onion">Onion</option>
+            <option value="pulses">Pulses</option>
+            <option value="cotton">Cotton</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Quantity (tonnes)</label>
+          <input type="number" id="heroQty" placeholder="e.g. 50" min="1">
+        </div>
+        <button class="btn btn-amber btn-lg" id="heroSearchBtn">Search →</button>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">2,400+</span><span class="stat-label">Warehouses Listed</span></div>
+      <div class="stat-item"><span class="stat-num">18,000+</span><span class="stat-label">Farmers Served</span></div>
+      <div class="stat-item"><span class="stat-num">₹42Cr+</span><span class="stat-label">Crop Value Protected</span></div>
+      <div class="stat-item"><span class="stat-num">85%</span><span class="stat-label">AI Match Accuracy</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Why AgriStore AI</div>
+    <h2 class="section-title">Everything a farmer needs<br>to store safely & smartly</h2>
+    <p class="section-desc">Built on Django + scikit-learn, our platform combines geospatial search, AI recommendations, and real-time booking.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div>
+        <h3>Location-Based Search</h3>
+        <p>Find warehouses within your preferred radius using Haversine-based geospatial search. Compare distances and rates in seconds.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>AI Recommendations</h3>
+        <p>Our scoring engine ranks warehouses by crop compatibility, price, capacity, location and rating — up to 100% match score.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Real-Time Booking</h3>
+        <p>Book storage instantly with live availability tracking, auto-calculated pricing, and digital confirmation references.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3>Price Comparison</h3>
+        <p>Compare warehouses side-by-side on price per tonne, facilities, and verified user ratings. Never overpay again.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>Warehouse Owner Portal</h3>
+        <p>Owners list facilities, manage capacity, accept/reject bookings and track revenue — all from one dashboard.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Crop-Safe Storage</h3>
+        <p>Filter by crop-compatible warehouses — dry storage, cold chain, refrigerated, or silo based on your produce type.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-bg" id="how-it-works">
+  <div class="how-inner">
+    <div class="section-label" style="color:var(--green-400)">Simple Process</div>
+    <h2 class="section-title" style="color:#fff">From harvest to storage<br>in 4 easy steps</h2>
+    <div class="how-grid">
+      <div class="how-step"><div class="step-num">01</div><h4>Register & Describe</h4><p>Create your account and enter your crop type, quantity, and preferred storage duration.</p></div>
+      <div class="how-step"><div class="step-num">02</div><h4>Search & Compare</h4><p>Browse AI-ranked warehouses near you. Filter by price, capacity, crop type, and distance.</p></div>
+      <div class="how-step"><div class="step-num">03</div><h4>Book Instantly</h4><p>Select your preferred warehouse and confirm your booking. Receive instant digital confirmation.</p></div>
+      <div class="how-step"><div class="step-num">04</div><h4>Store & Track</h4><p>Move your produce and track storage status, costs, and pickup dates from your dashboard.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to protect your harvest?</h2>
+  <p>Join thousands of farmers already using AgriStore AI to reduce post-harvest losses.</p>
+  <div class="cta-btns">
+    <a href="search.html"   class="btn btn-primary btn-lg">Find Storage Now →</a>
+    <a href="register.html" class="btn btn-outline btn-lg">Create Free Account</a>
+  </div>
+</section>
+
+<footer>
+  <a href="index.html">Home</a>
+  <a href="search.html">Find Storage</a>
+  <a href="login.html">Login</a>
+  <a href="register.html">Register</a>
+  <div class="footer-copy">© 2025 AgriStore AI – Group F16 · DSATM, Dayananda Sagar Academy of Technology and Management</div>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script>
+  document.getElementById('heroSearchBtn')?.addEventListener('click', () => {
+    const city = document.getElementById('heroCity').value.trim();
+    const crop = document.getElementById('heroCrop').value;
+    const qty  = document.getElementById('heroQty').value;
+    const qs   = new URLSearchParams({ city, crop, qty }).toString();
+    window.location.href = `search.html?${qs}`;
+  });
+</script>
+</body>
+</html>

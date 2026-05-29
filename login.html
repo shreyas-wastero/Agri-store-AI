@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login – AgriStore AI</title>
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/modal.css">
+<style>
+.auth-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+}
+.auth-left {
+  background: linear-gradient(135deg, var(--green-900), var(--green-700));
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.auth-left::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04' fill-rule='evenodd'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.auth-left-content { position: relative; z-index: 1; max-width: 420px; }
+.auth-left h1 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2; }
+.auth-left h1 em { font-style: italic; color: var(--amber-300); }
+.auth-left p { color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 2rem; }
+.auth-feature { display: flex; align-items: center; gap: .75rem; margin-bottom: .875rem; font-size: .9rem; color: rgba(255,255,255,.85); }
+.auth-feature span { width: 32px; height: 32px; border-radius: 50%; background: rgba(82,183,136,.2); border: 1px solid rgba(82,183,136,.3); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+
+.auth-right {
+  background: var(--white);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.auth-right a.logo { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 2rem; }
+.auth-form-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--green-900); margin-bottom: .25rem; }
+.auth-form-sub { font-size: .875rem; color: var(--text-muted); margin-bottom: 2rem; }
+.auth-form-sub a { color: var(--green-600); }
+
+.divider { display: flex; align-items: center; gap: 1rem; margin: 1.25rem 0; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.divider span { font-size: .75rem; color: var(--text-muted); }
+
+.demo-box { background: var(--green-50); border: 1px solid var(--green-100); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.25rem; font-size: .8rem; }
+.demo-box h4 { font-size: .75rem; font-weight: 700; color: var(--green-800); text-transform: uppercase; letter-spacing: .07em; margin-bottom: .5rem; }
+.demo-cred { display: flex; justify-content: space-between; margin-bottom: .2rem; }
+.demo-cred span { color: var(--text-muted); }
+.demo-cred code { font-size: .8rem; color: var(--green-800); background: var(--green-100); padding: .1rem .35rem; border-radius: 3px; }
+
+.error-msg { color: #c0392b; font-size: .825rem; margin-bottom: 1rem; min-height: 1.2rem; }
+
+@media (max-width: 768px) {
+  .auth-layout { grid-template-columns: 1fr; }
+  .auth-left { display: none; }
+  .auth-right { padding: 2rem 1.25rem; }
+}
+</style>
+</head>
+<body>
+<div class="auth-layout">
+  <!-- LEFT PANEL -->
+  <div class="auth-left">
+    <div class="auth-left-content">
+      <h1>Welcome back to<br><em>AgriStore AI</em></h1>
+      <p>The smart platform connecting farmers with verified storage warehouses across Karnataka.</p>
+      <div class="auth-feature"><span>🤖</span> AI-powered warehouse matching</div>
+      <div class="auth-feature"><span>📍</span> Location-based search with distance scoring</div>
+      <div class="auth-feature"><span>📋</span> Real-time booking with digital receipts</div>
+      <div class="auth-feature"><span>📊</span> Live capacity & availability tracking</div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="auth-right">
+    <a href="index.html" class="logo">
+      <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#D8F3DC" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <span class="logo-text">Agri<span>Store</span> AI</span>
+    </a>
+
+    <div class="auth-form-title">Sign in to your account</div>
+    <div class="auth-form-sub">New user? <a href="register.html">Create a free account →</a></div>
+
+    <!-- Demo Credentials -->
+    <div class="demo-box">
+      <h4>Demo Credentials</h4>
+      <div class="demo-cred"><span>👨‍🌾 Farmer:</span><code>raju_s / farmer123</code></div>
+      <div class="demo-cred"><span>🏭 Owner:</span><code>mahesh_k / owner123</code></div>
+      <div class="demo-cred"><span>⚙️ Admin:</span><code>admin / admin123</code></div>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" id="loginUsername" placeholder="Enter your username" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password">
+      </div>
+      <div class="error-msg" id="loginError"></div>
+      <button type="submit" id="loginBtn" class="btn btn-primary btn-full btn-lg">Login</button>
+    </form>
+
+    <div class="divider"><span>or quick fill</span></div>
+
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <button class="btn btn-outline btn-sm"
+        onclick="document.getElementById('loginUsername').value='raju_s';document.getElementById('loginPassword').value='farmer123'">
+        👨‍🌾 Farmer Demo
+      </button>
+      <button class="btn btn-outline btn-sm"
+        onclick="document.getElementById('loginUsername').value='mahesh_k';document.getElementById('loginPassword').value='owner123'">
+        🏭 Owner Demo
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

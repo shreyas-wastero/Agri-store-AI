@@ -1,0 +1,72 @@
+/* ═══════════════════════════════════════════
+   AgriStore AI — CSS Variables & Reset
+═══════════════════════════════════════════ */
+
+:root {
+  /* Green Palette */
+  --green-900: #0D2818;
+  --green-800: #1B4332;
+  --green-700: #2D6A4F;
+  --green-600: #40916C;
+  --green-500: #52B788;
+  --green-400: #74C69D;
+  --green-200: #95D5B2;
+  --green-100: #D8F3DC;
+  --green-50:  #F0FBF2;
+
+  /* Amber Palette */
+  --amber-900: #7D4E0A;
+  --amber-700: #B5621E;
+  --amber-500: #D4A843;
+  --amber-300: #E9C97B;
+  --amber-100: #FBF0D3;
+  --amber-50:  #FFFBF0;
+
+  /* Neutrals */
+  --cream:       #FAFAF4;
+  --cream-dark:  #F2F0E6;
+  --text:        #1A1A1A;
+  --text-muted:  #6B6B6B;
+  --text-light:  #9B9B9B;
+  --white:       #FFFFFF;
+  --border:      #E5E5DF;
+  --border-dark: #D0CFC7;
+
+  /* Spacing */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.14);
+
+  /* Typography */
+  --font-display: 'Fraunces', serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+a { text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: var(--font-body); cursor: pointer; border: none; outline: none; }
+input, select, textarea { font-family: var(--font-body); }
